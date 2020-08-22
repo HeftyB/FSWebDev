@@ -1,24 +1,33 @@
 import React from "react";
-import lzzogo from "./logo.svg";
+import { Route, Switch, Link } from "react-router-dom";
+import Home from "./components/Home";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+      <Link to="/">Home</Link>
+      <Link to="/Projects">Projects</Link>
+      <Link to="/Contact">Contact</Link>
+
+
+        <Switch>
+          <Route exact path={"/"}>
+            <Home/>
+          </Route>
+
+          <Route path={"/Projects"}>
+            <Projects/>
+          </Route>
+
+          <Route path={"/Contact"}>
+              <Contact/>
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }
